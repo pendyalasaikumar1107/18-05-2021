@@ -1,10 +1,12 @@
-package com.tcs.evaluation.profileEvaluation.entity;
+package com.tcs.evaluation.profileEvaluation.po;
 
-import javax.persistence.Id;
+import org.springframework.stereotype.Component;
 
-public class updatedProfileDetails {
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Component
+public class Profilepo {
 	
-	@Id
 	private int id;
 	private String vendor;
 	private String name;
@@ -14,6 +16,16 @@ public class updatedProfileDetails {
 	private String skill1;
 	private String skill2;
 	private String skill3;
+	@JsonFormat(pattern = "yyyy-mm-dd")
+	private String date;
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getVendor() {
 		return vendor;
 	}
@@ -62,19 +74,10 @@ public class updatedProfileDetails {
 	public void setSkill3(String skill3) {
 		this.skill3 = skill3;
 	}
-	private String evalname;
-	
-	
-	public int getId() {
-		return id;
+	public String getDate() {
+		return date;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getEvalname() {
-		return evalname;
-	}
-	public void setEvalname(String evalname) {
-		this.evalname = evalname;
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

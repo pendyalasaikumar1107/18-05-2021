@@ -1,9 +1,4 @@
-package com.tcs.evaluation.profileEvaluation.Controller;
-
-import com.tcs.evaluation.profileEvaluation.Entity.Evaluatorassigned;
-import com.tcs.evaluation.profileEvaluation.Entity.Profile;
-import com.tcs.evaluation.profileEvaluation.Entity.Profilestatus;
-import com.tcs.evaluation.profileEvaluation.Entity.updatedProfileDetails;
+package com.tcs.evaluation.profileEvaluation.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +6,15 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.tcs.evaluation.profileEvaluation.Services.LeadService;
+import com.tcs.evaluation.profileEvaluation.entity.Evaluatorassigned;
+import com.tcs.evaluation.profileEvaluation.entity.Profile;
+import com.tcs.evaluation.profileEvaluation.entity.Profilestatus;
+import com.tcs.evaluation.profileEvaluation.entity.updatedProfileDetails;
+import com.tcs.evaluation.profileEvaluation.repository.Evaluator_Assigned;
+import com.tcs.evaluation.profileEvaluation.repository.ProfileRepo;
+import com.tcs.evaluation.profileEvaluation.repository.StatusRepo;
+import com.tcs.evaluation.profileEvaluation.services.LeadService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -21,10 +24,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.tcs.evaluation.profileEvaluation.Repository.Evaluator_Assigned;
-import com.tcs.evaluation.profileEvaluation.Repository.ProfileRepo;
-import com.tcs.evaluation.profileEvaluation.Repository.StatusRepo;
 
 @RestController
 @CrossOrigin

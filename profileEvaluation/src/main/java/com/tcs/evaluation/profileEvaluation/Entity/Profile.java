@@ -1,12 +1,12 @@
-package com.tcs.evaluation.profileEvaluation.Entity;
+package com.tcs.evaluation.profileEvaluation.entity;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
-
-
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Profile {
@@ -19,18 +19,26 @@ public class Profile {
 	private Float experience;
 	private String skill1;
 	private String skill2;
-	private String skill3;
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	@JsonFormat(pattern = "yyyy-mm-dd")
 	private String date;
 	
-	@OneToOne
-    @JoinTable(name = "evaluatorassigned",
-    joinColumns =
-      {@JoinColumn(name = "id", referencedColumnName = "id") },
-    inverseJoinColumns =
-      {@JoinColumn(name = "evalid", referencedColumnName = "evalid") })
-    private Evaluator evaluator;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "id")
+	private Profilestatus profilestatus;
 	
+	
+	public Profilestatus getStatus() {
+		return profilestatus;
+	}
+	public void setStatus(Profilestatus status) {
+		this.profilestatus = status;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getDate() {
+		return date;
+	}
 	public int getId() {
 		return id;
 	}
@@ -74,23 +82,11 @@ public class Profile {
 	public void setSkill2(String skill2) {
 		this.skill2 = skill2;
 	}
-	public String getSkill3() {
-		return skill3;
-	}
-	public void setSkill3(String skill3) {
-		this.skill3 = skill3;
-	}
 	public String getVendor() {
 		return vendor;
 	}
 	public void setVendor(String vendor) {
 		this.vendor = vendor;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
 	}
 
 }

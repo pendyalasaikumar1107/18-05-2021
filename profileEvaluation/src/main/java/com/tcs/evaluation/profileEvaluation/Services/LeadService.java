@@ -1,4 +1,4 @@
-package com.tcs.evaluation.profileEvaluation.Services;
+package com.tcs.evaluation.profileEvaluation.services;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tcs.evaluation.profileEvaluation.Entity.Evaluatorassigned;
-import com.tcs.evaluation.profileEvaluation.Entity.Profile;
-import com.tcs.evaluation.profileEvaluation.Repository.Evaluator_Assigned;
-import com.tcs.evaluation.profileEvaluation.Repository.ProfileRepo;
+import com.tcs.evaluation.profileEvaluation.entity.Evaluatorassigned;
+import com.tcs.evaluation.profileEvaluation.entity.Profile;
+import com.tcs.evaluation.profileEvaluation.repository.Evaluator_Assigned;
+import com.tcs.evaluation.profileEvaluation.repository.ProfileRepo;
 @Service
 public class LeadService {
 	@PersistenceContext
