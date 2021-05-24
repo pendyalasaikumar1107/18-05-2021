@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS PROFILE;
 
 
 
-CREATE TABLE Profile(id INT PRIMARY KEY, vendor VARCHAR(250), name VARCHAR(250),mobileno VARCHAR(250),location VARCHAR(250),experience FLOAT(2),skill1 VARCHAR(250),skill2 VARCHAR(250),date DATE);
+CREATE TABLE Profile(id INT PRIMARY KEY, vendor VARCHAR(250), name VARCHAR(250),mobileno BIGINT,location VARCHAR(250),experience FLOAT(2),skill1 VARCHAR(250),skill2 VARCHAR(250),date DATE);
 
 INSERT INTO Profile (id, vendor, name, mobileno, location, experience, skill1, skill2, date) 
 VALUES (1967214,'TCS', 'P1' , '1111111111','Chennai','2.00','java','angular','2021-05-10'),
