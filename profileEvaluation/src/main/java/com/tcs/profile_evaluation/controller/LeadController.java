@@ -45,6 +45,7 @@ public class LeadController {
 		
 	}
 	
+//	get daily hired and not hired array
 	@GetMapping("/date/{date}")
 	public int[] profileWithDate(@PathVariable String date){
 		int[] dateFilter= new int[3];
@@ -63,7 +64,7 @@ public class LeadController {
 		return dateFilter;
 	}
 	
-	
+//	get monthly hired and not hired array
 	@GetMapping("/month/{month}")
 	public int[] profileWithMonth(@PathVariable String month){
 		int[] monthFilter= new int[4];
@@ -84,11 +85,13 @@ public class LeadController {
 	
 	}
 	
+//send all the profiles of respective month
 	@GetMapping("/monthprofiles/{month}")
 	public List<Integer> profileByWithMonth(@PathVariable String month){
 		return  repo.findByMonth(month);
 	}
 	
+	//get all profiles with status and evaluator assigned
 	@GetMapping("/updated")
     public List<Profile> getDbdetails() {
 		List <Profile> values = repo.findAll();

@@ -7,11 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotEmpty;
 
-
-import com.sun.istack.NotNull;
 
 import javax.persistence.JoinColumn;
 
@@ -20,18 +16,11 @@ import javax.persistence.JoinColumn;
 public class Profile {
 	@Id
 	private int id;
-	@NotEmpty(message = "Vendor is mandatory")
 	private String vendor;
-	@NotEmpty(message = "Name is mandatory")
 	private String name;
-	@NotNull()
 	private Long mobileno;
-	@NotEmpty(message = "Location is mandatory")
 	private String location;
-	@NotNull()
-	@DecimalMin("1.00")
 	private Float experience;
-	@NotEmpty(message = "Skill1 is mandatory")
 	private String skill1;
 	private String skill2;
 	private LocalDate date;

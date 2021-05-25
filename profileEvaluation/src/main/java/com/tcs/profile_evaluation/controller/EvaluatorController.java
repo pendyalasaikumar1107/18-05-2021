@@ -32,10 +32,9 @@ public class EvaluatorController {
 	@Autowired
 	EvaluatorService eservice;
 	
-
+// get all the profiles associated to particular evaluator
 	@GetMapping("/evaluator/{id}")
 	public List<Profile> getProfilesByEvaluatorId(@PathVariable int id) {
-	//	return eservice.assignedProfilesByEvaluatorId(id);
 		List<Integer> myList1 = new ArrayList<Integer>();
 		List<Evaluatorassigned> myList = new ArrayList<Evaluatorassigned>();
 		myList = evalAssigned.findByevalid(id);
@@ -46,21 +45,25 @@ public class EvaluatorController {
 		return repo.findAllById(myList1);
 	}
 
+//	get all evaluators
 	@GetMapping("/getEvaluators")
 	public List<Evaluator> getAllEvaluators() {
 		return eservice.getAllEvaluators();
 	}
 
+//	get all records associated to evaluator
 	@GetMapping("/Assigned")
 	public List<Evaluatorassigned> allAssigned(){
 		return evalAssigned.findAll();
 	}
 	
-	@GetMapping("getupdateprofile")
+//	get all the profiles with updated status and comments
+	@GetMapping("/getupdateprofile")
 	public List<Profilestatus> sendupdatedStatus(){
 		return statusrepo.findAll();
 	}
 	
+// Assign status and comments to profile
 	@PutMapping("/statusupdate")
 	public String updateprofile(@RequestBody Profilestatus status) {
 		statusrepo.save(status);

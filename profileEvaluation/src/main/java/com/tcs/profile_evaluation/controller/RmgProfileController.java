@@ -19,6 +19,7 @@ public class RmgProfileController {
 	@Autowired
 	ProfileService profileService;
 	
+//	push received data from RMG to database
 	@PostMapping("/addProfile")
 	public String addProfile(@Valid @RequestBody Profilepo profilepo) {
 		return profileService.addProfile(profilepo);

@@ -1,20 +1,31 @@
 package com.tcs.profile_evaluation.po;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
+
 @Component
 public class Profilepo {
 	
+	
 	private int id;
+	@NotEmpty(message = "Vendor is mandatory")
 	private String vendor;
+	@NotEmpty(message = "Name is mandatory")
 	private String name;
+	@NotNull
+	@Min(1000000000)
 	private Long mobileno;
+	@NotEmpty(message = "Location is mandatory")
 	private String location;
+	@NotNull
+	@DecimalMin("1.00")
 	private Float experience;
+	@NotEmpty(message = "Skill1 is mandatory")
 	private String skill1;
 	private String skill2;
-	private String skill3;
-	
-	
 	
 	public int getId() {
 		return id;
@@ -64,11 +75,6 @@ public class Profilepo {
 	public void setSkill2(String skill2) {
 		this.skill2 = skill2;
 	}
-	public String getSkill3() {
-		return skill3;
-	}
-	public void setSkill3(String skill3) {
-		this.skill3 = skill3;
-	}
+	
 	
 }
