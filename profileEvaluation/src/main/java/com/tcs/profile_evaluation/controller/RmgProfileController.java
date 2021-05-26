@@ -23,6 +23,7 @@ public class RmgProfileController {
 	@PostMapping("/addProfile")
 	public String addProfile(@Valid @RequestBody Profilepo profilepo) {
 		return profileService.addProfile(profilepo);
+	
 	}
 
 	
