@@ -26,13 +26,8 @@ VALUES (1,'Beaulah', '687339409','dixcy.ms'),
 	
 
 
-
-
 CREATE TABLE Evaluatorassigned(id INT PRIMARY KEY, evalname VARCHAR(250) , evalid INT);
 INSERT INTO Evaluatorassigned (id,evalname,evalid) VALUES(1967219,'beauleah',1),(100000,'rohan',4);
-
-
-
 
 
 

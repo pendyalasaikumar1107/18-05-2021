@@ -2,6 +2,8 @@ package com.tcs.profile_evaluation.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.tcs.profile_evaluation.entity.Profile;
 import com.tcs.profile_evaluation.entity.Profilestatus;
 import com.tcs.profile_evaluation.po.EvaluatorAssignedPo;
@@ -39,7 +41,7 @@ public class LeadController {
 	}
 	
 	@PutMapping("/updateProfile")
-	public String putEvaluator(@RequestBody EvaluatorAssignedPo eval) {
+	public String putEvaluator(@Valid @RequestBody EvaluatorAssignedPo eval) {
 		
 		return leadService.updateEvaluator(eval);
 		
@@ -48,8 +50,9 @@ public class LeadController {
 //	get daily hired and not hired array
 	@GetMapping("/date/{date}")
 	public int[] profileWithDate(@PathVariable String date){
-		int[] dateFilter= new int[3];
+		int[] dateFilter= new int[9];
 		int hired=0; int nothired=0; 
+		int junior=0;int gap=0;int skill=0;int notavailable=0;int notjoin=0;
 		List<Integer> list= repo.findByDate(date);
 		dateFilter[0]=list.size();
 		List<Profilestatus> listStatus= checkStatus.findAllById(list);
@@ -57,18 +60,45 @@ public class LeadController {
 			if(profilestatus.getStatus().equalsIgnoreCase("hired"))
 				hired++;
 			if(profilestatus.getStatus().equalsIgnoreCase("not hired"))
+			{
 				nothired++;
+				if(profilestatus.getComments().equalsIgnoreCase("Too junior"))
+				{
+					junior++;
+				}
+					if(profilestatus.getComments().equalsIgnoreCase("Competency Gap"))
+					{
+						gap++;
+	
+					}
+						if(profilestatus.getComments().equalsIgnoreCase("Skills Mismatched")) {
+							skill++;
+						}
+							if(profilestatus.getComments().equalsIgnoreCase("Not Available")) {
+								notavailable++;
+							}
+								if(profilestatus.getComments().equalsIgnoreCase("Associate not willing to join")) {
+									notjoin++;
+								}
+			}
 		}
 		dateFilter[1] = hired;
 		dateFilter[2] = nothired;
+		dateFilter[3] =dateFilter[0]-dateFilter[1]-dateFilter[2];
+		dateFilter[4]=junior;
+		dateFilter[5]=gap;
+		dateFilter[6]=skill;
+		dateFilter[7]=notavailable;
+		dateFilter[8]=notjoin;
 		return dateFilter;
 	}
 	
 //	get monthly hired and not hired array
 	@GetMapping("/month/{month}")
 	public int[] profileWithMonth(@PathVariable String month){
-		int[] monthFilter= new int[4];
-		int hired=0; int nothired=0; 
+		int[] monthFilter= new int[9];
+		int hired=0; int nothired=0;
+		int junior=0;int gap=0;int skill=0;int notavailable=0;int notjoin=0;
 		List<Integer> list= repo.findByMonth(month);
 		monthFilter[0]=list.size();
 		List<Profilestatus> listStatus=checkStatus.findAllById(list);
@@ -76,11 +106,36 @@ public class LeadController {
 			if(profilestatus.getStatus().equalsIgnoreCase("hired"))
 				hired++;
 			if(profilestatus.getStatus().equalsIgnoreCase("not hired"))
-				nothired++;
-				}
+			{
+					nothired++;
+					if(profilestatus.getComments().equalsIgnoreCase("Too Junior"))
+					{
+						junior++;
+					}
+						if(profilestatus.getComments().equalsIgnoreCase("Competency Gap"))
+						{
+							gap++;
+		
+						}
+							if(profilestatus.getComments().equalsIgnoreCase("Skills Mismatched")) {
+								skill++;
+							}
+								if(profilestatus.getComments().equalsIgnoreCase("Not Available")) {
+									notavailable++;
+								}
+									if(profilestatus.getComments().equalsIgnoreCase("Associate not willing to join")) {
+										notjoin++;
+									}
+			}
+		}
 		monthFilter[1]=hired;
 		monthFilter[2]=nothired;
 		monthFilter[3]=monthFilter[0]-monthFilter[1]-monthFilter[2];
+		monthFilter[4]=junior;
+		monthFilter[5]=gap;
+		monthFilter[6]=skill;
+		monthFilter[7]=notavailable;
+		monthFilter[8]=notjoin;
 		return monthFilter;
 	
 	}
